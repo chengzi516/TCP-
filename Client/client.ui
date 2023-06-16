@@ -176,25 +176,6 @@ background-image: url(:/photo/907879.png);
      <string>数据发送口</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>260</y>
-      <width>281</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>400</width>
-      <height>170</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 255,100);</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_send">
     <property name="geometry">
      <rect>
@@ -218,6 +199,59 @@ background-image: url(:/photo/907879.png);
     </property>
     <property name="text">
      <string>发送</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>120</y>
+      <width>87</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>apple</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>banana</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>grape</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>watermelon</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>cucumber</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>pear</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>271</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 170, 255,100);</string>
     </property>
    </widget>
   </widget>

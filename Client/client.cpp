@@ -72,13 +72,16 @@ void client::connectSucceed(){
 }
 
 void client::Server_disconnect(){
-    tcpSocket->disconnectFromHost();
-    tcpSocket = Q_NULLPTR;
-     ui->textBrowser->append("服务器已主动断开连接！！请及时联系工作人员恢复！");
+     tcpSocket->disconnectFromHost();
+     tcpSocket = Q_NULLPTR;
+     ui->textBrowser->append("服务器已主动断开连接！！");
      ui->lineEdit_addr->setEnabled(true);
      ui->lineEdit_port->setEnabled(true);
      ui->pushButton_connect->setText("连接");
+
+
 }
+
 void client::read_ServerDate(){
     if(ui->checkBox_autowrap->isChecked()){
         ui->textBrowser->append(QString(tcpSocket->readAll()).toUtf8());
@@ -88,12 +91,42 @@ void client::read_ServerDate(){
     ui->textBrowser->moveCursor(QTextCursor::End); //设置自动移动到底部
 }
 
-
+/*
+void client::sendData(QString data, QString type)
+{
+    QByteArray message;
+    QDataStream out(&message, QIODevice::WriteOnly);
+    out << data << type; // 将要发送的数据和数据类型一起打包发送
+    // out << QList<double>() << data << type; // 在数据和数据类型前添加一个空的 QList<double>，占位用
+    tcpSocket->write(message);
+}
+*/
+void client::sendData(QString data, QString type)
+{
+    QStringList dataList = data.split(","); // 将逗号分隔的字符串拆分成两个部分
+    if (dataList.size() != 2) { // 如果拆分后不是两个部分，说明数据格式不正确
+        qDebug() << "Invalid data format";
+        return;
+    }
+    QString message = QString("%1,%2").arg(dataList[0]).arg(dataList[1]); // 构造发送的数据字符串，用逗号分隔价格和重量
+    tcpSocket->write(QString("%1:%2").arg(type).arg(message).toUtf8()); // 发送数据和数据类型，用冒号分隔
+}
 
 void client::on_pushButton_send_clicked()
 {
-   QString data = ui->textEdit->toPlainText();
-    tcpSocket->write(data.toUtf8());
+
+    QString data = ui->lineEdit->text();
+    QString type = ui->comboBox->currentText(); // 获取数据类型
+    sendData(data, type); // 发送数据和数据类型
+}
+/*
+void client::on_pushButton_send_clicked()
+{
+   //QString data = ui->textEdit->toPlainText();
+  // tcpSocket->write(data.toUtf8(),str);
+    QString data = ui->lineEdit->text();
+    QString type = ui->comboBox->currentText(); // 获取数据类型
+    sendData(data, type); // 发送数据和数据类型
    //以下是自动发送的代码，有停止发送后仍然继续的bug
   /*  if(ui->checkBox_period->isChecked()){
         int time = ui->lineEdit_timeset->text().toInt();
@@ -113,7 +146,7 @@ void client::on_pushButton_send_clicked()
         QString data = ui->textEdit->toPlainText();
         tcpSocket->write(data.toUtf8());
     }*/
-}
+//}
 
 /*void client::irq_time_period(){
     QString data = ui->textEdit->toPlainText();

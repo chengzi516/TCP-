@@ -30,7 +30,8 @@ private slots:
 
    //void Server_connect();
     //void readyRead();
-   // void irq_time_period();
+    // void irq_time_period();
+    void sendData(QString data, QString type);
 private:
     Ui::client *ui;
     QTcpServer *tcpSrever;//监听套接字

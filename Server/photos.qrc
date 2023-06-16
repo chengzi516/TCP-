@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>photo/869925.png</file>
+        <file>photo/登录.svg</file>
+        <file>photo/密码（关）.svg</file>
+        <file>photo/账户.svg</file>
+        <file>photo/907880.png</file>
+        <file>photo/833691.jpg</file>
+        <file>photo/apple.svg</file>
+        <file>photo/banana.svg</file>
+        <file>photo/cucumber.svg</file>
+        <file>photo/grape.svg</file>
+        <file>photo/pear.svg</file>
+        <file>photo/watermelon.svg</file>
+    </qresource>
+</RCC>

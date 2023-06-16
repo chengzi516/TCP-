@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -22,7 +23,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -42,8 +42,9 @@ public:
     QLineEdit *lineEdit_port;
     QCheckBox *checkBox_autowrap;
     QLabel *label_5;
-    QTextEdit *textEdit;
     QPushButton *pushButton_send;
+    QComboBox *comboBox;
+    QLineEdit *lineEdit;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -95,16 +96,18 @@ public:
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setGeometry(QRect(11, 240, 75, 16));
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(10, 260, 281, 101));
-        textEdit->setMaximumSize(QSize(400, 170));
-        textEdit->setStyleSheet(QStringLiteral("background-color: rgb(170, 170, 255,100);"));
         pushButton_send = new QPushButton(centralWidget);
         pushButton_send->setObjectName(QStringLiteral("pushButton_send"));
         pushButton_send->setGeometry(QRect(310, 330, 93, 28));
         pushButton_send->setMaximumSize(QSize(100, 16777215));
         pushButton_send->setBaseSize(QSize(0, 0));
+        comboBox = new QComboBox(centralWidget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setGeometry(QRect(200, 120, 87, 22));
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(10, 270, 271, 121));
+        lineEdit->setStyleSheet(QStringLiteral("background-color: rgb(170, 170, 255,100);"));
         client->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(client);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -133,6 +136,15 @@ public:
         checkBox_autowrap->setText(QApplication::translate("client", "\346\216\245\345\217\227\350\207\252\345\212\250\346\215\242\350\241\214", Q_NULLPTR));
         label_5->setText(QApplication::translate("client", "\346\225\260\346\215\256\345\217\221\351\200\201\345\217\243", Q_NULLPTR));
         pushButton_send->setText(QApplication::translate("client", "\345\217\221\351\200\201", Q_NULLPTR));
+        comboBox->clear();
+        comboBox->insertItems(0, QStringList()
+         << QApplication::translate("client", "apple", Q_NULLPTR)
+         << QApplication::translate("client", "banana", Q_NULLPTR)
+         << QApplication::translate("client", "grape", Q_NULLPTR)
+         << QApplication::translate("client", "watermelon", Q_NULLPTR)
+         << QApplication::translate("client", "cucumber", Q_NULLPTR)
+         << QApplication::translate("client", "pear", Q_NULLPTR)
+        );
     } // retranslateUi
 
 };
